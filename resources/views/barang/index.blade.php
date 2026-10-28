@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -28,6 +27,7 @@
                 <th>Jumlah</th>
                 <th>Kondisi</th>
                 <th>Keterangan</th>
+                <th>Aksi</th>
             </tr>
         </thead>
 
@@ -42,6 +42,11 @@
                     <td>{{ $barang->jumlah }}</td>
                     <td>{{ $barang->kondisi }}</td>
                     <td>{{ $barang->keterangan }}</td>
+                    <td>
+                        <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-warning btn-sm">
+                            Edit
+                        </a>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -50,4 +55,3 @@
 
 </body>
 </html>
-```
