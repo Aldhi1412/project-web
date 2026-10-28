@@ -10,6 +10,7 @@
 <body>
 
 <div class="container mt-5">
+
     <h2 class="mb-4">Data Barang Laboratorium</h2>
 
     <a href="{{ route('barang.create') }}" class="btn btn-primary mb-3">
@@ -17,6 +18,7 @@
     </a>
 
     <table class="table table-bordered table-striped">
+
         <thead class="table-dark">
             <tr>
                 <th>No</th>
@@ -32,25 +34,57 @@
         </thead>
 
         <tbody>
+
             @foreach ($barangs as $barang)
+
                 <tr>
                     <td>{{ $loop->iteration }}</td>
+
                     <td>{{ $barang->kode_barang }}</td>
+
                     <td>{{ $barang->nama_barang }}</td>
+
                     <td>{{ $barang->kategori }}</td>
+
                     <td>{{ $barang->lokasi }}</td>
+
                     <td>{{ $barang->jumlah }}</td>
+
                     <td>{{ $barang->kondisi }}</td>
+
                     <td>{{ $barang->keterangan }}</td>
+
                     <td>
-                        <a href="{{ route('barang.edit', $barang->id) }}" class="btn btn-warning btn-sm">
+
+                        <a href="{{ route('barang.edit', $barang->id) }}"
+                           class="btn btn-warning btn-sm">
                             Edit
                         </a>
+
+                        <form action="{{ route('barang.destroy', $barang->id) }}"
+                              method="POST"
+                              class="d-inline">
+
+                            @csrf
+
+                            @method('DELETE')
+
+                            <button type="submit"
+                                    class="btn btn-danger btn-sm">
+                                Hapus
+                            </button>
+
+                        </form>
+
                     </td>
                 </tr>
+
             @endforeach
+
         </tbody>
+
     </table>
+
 </div>
 
 </body>
